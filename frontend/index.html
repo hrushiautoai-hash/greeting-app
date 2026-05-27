@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greeting App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="box">
+    <h1>Greeting App</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button onclick="greet()">Say Hello</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    async function greet() {
+      const name = document.getElementById("nameInput").value;
+      const response = await fetch("http://localhost:3000/greet?name=" + name);
+      const data = await response.json();
+      document.getElementById("result").innerText = data.message;
+    }
+  </script>
+
+</body>
+</html>
